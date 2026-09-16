@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><title>TicketOps AI - Console</title><link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&amp;family=JetBrains+Mono:wght@400;500;600&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{"colors":{"badge-rule-text":"#475569","primary-fixed-dim":"#bec6e0","border-subtle":"#E2E8F0","status-info-subtle":"#EEF2FF","outline":"#76777d","badge-llm-text":"#7C3AED","status-warning-subtle":"#FFFBEB","status-info":"#4F46E5","tertiary-container":"#001e2f","inverse-primary":"#bec6e0","status-success-subtle":"#ECFDF5","status-critical-subtle":"#FFF1F2","on-tertiary-fixed":"#001e2f","surface-container":"#e5eeff","on-primary-fixed-variant":"#3f465c","secondary-container":"#645efb","on-tertiary-container":"#008cc7","outline-variant":"#c6c6cd","on-background":"#0b1c30","on-error-container":"#93000a","secondary-fixed":"#e2dfff","on-tertiary-fixed-variant":"#004c6e","surface-variant":"#d3e4fe","surface-container-low":"#eff4ff","tertiary-fixed-dim":"#89ceff","on-secondary":"#ffffff","secondary-fixed-dim":"#c3c0ff","on-primary-container":"#7c839b","primary":"#000000","surface":"#f8f9ff","primary-fixed":"#dae2fd","on-primary":"#ffffff","tertiary-fixed":"#c9e6ff","badge-rule-bg":"#F1F5F9","surface-container-highest":"#d3e4fe","tertiary":"#000000","badge-llm-bg":"#F5F3FF","status-critical":"#F43F5E","on-tertiary":"#ffffff","primary-container":"#131b2e","on-primary-fixed":"#131b2e","border-strong":"#CBD5E1","surface-bright":"#f8f9ff","on-error":"#ffffff","surface-card":"#FFFFFF","surface-dim":"#cbdbf5","on-secondary-fixed-variant":"#3323cc","surface-tint":"#565e74","error":"#ba1a1a","inverse-on-surface":"#eaf1ff","surface-container-high":"#dce9ff","surface-container-lowest":"#ffffff","surface-bg":"#F8FAFC","secondary":"#4b41e1","inverse-surface":"#213145","status-warning":"#F59E0B","badge-llm-border":"#DDD6FE","on-secondary-fixed":"#0f0069","on-secondary-container":"#fffbff","background":"#f8f9ff","error-container":"#ffdad6","status-success":"#10B981","badge-rule-border":"#E2E8F0","on-surface":"#0b1c30","on-surface-variant":"#45464d"},"borderRadius":{"DEFAULT":"0.125rem","lg":"0.25rem","xl":"0.5rem","full":"0.75rem"},"spacing":{"space-lg":"1rem","space-xs":"0.25rem","space-md":"0.75rem","gutter":"0.75rem","space-sm":"0.5rem","space-xl":"1.5rem","margin":"1.25rem"},"fontFamily":{"table-cell-mono":["JetBrains Mono"],"body-sm":["Geist"],"headline-lg":["Geist"],"label-mono-xs":["JetBrains Mono"],"display-kpi":["Geist"],"body-base":["Geist"],"headline-md":["Geist"],"label-mono-sm":["JetBrains Mono"],"headline-sm":["Geist"]},"fontSize":{"table-cell-mono":["12px",{"lineHeight":"16px","letterSpacing":"-0.01em","fontWeight":"400"}],"body-sm":["12px",{"lineHeight":"16px","letterSpacing":"0em","fontWeight":"400"}],"headline-lg":["22px",{"lineHeight":"28px","letterSpacing":"-0.02em","fontWeight":"600"}],"label-mono-xs":["10px",{"lineHeight":"12px","letterSpacing":"0.04em","fontWeight":"500"}],"display-kpi":["30px",{"lineHeight":"36px","letterSpacing":"-0.03em","fontWeight":"600"}],"body-base":["13px",{"lineHeight":"18px","letterSpacing":"0em","fontWeight":"400"}],"headline-md":["16px",{"lineHeight":"24px","letterSpacing":"-0.01em","fontWeight":"600"}],"label-mono-sm":["11px",{"lineHeight":"14px","letterSpacing":"0.02em","fontWeight":"500"}],"headline-sm":["14px",{"lineHeight":"20px","letterSpacing":"-0.005em","fontWeight":"600"}]}}}};</script></head><body class="bg-surface-bg font-body-base text-body-base text-on-surface"><aside class="fixed left-0 top-0 h-full w-64 bg-surface-card border-r border-border-subtle z-50 flex flex-col justify-between"><div class="flex flex-col"><div class="h-16 px-space-lg flex items-center gap-space-sm border-b border-border-subtle"><img alt="AI Ticket Ops Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDl83Ek06accL4DaQLWghI3yyvEjl5cF2MbNxeJN61apZDnpvW5diRw6YfogXMi7wSDySeoS9y7T17tHEyPA5jm-1WRmqXytj2FF8DXj13jN3pdi-p4aMqwJ5jrLdSXp59_q9mQSBv4WJSv4t058j6UWCnwkIw3I567jgGnvDbh78Eb063hf8XhlWCEsRP8xkJFlPk9aqmswkwaGSV_ctTqcCpWr0mNI6PDY4_eTAYbp1TIb9AauZqaAw"/><div class="flex flex-col"><span class="font-headline-sm text-headline-sm text-on-surface leading-none">TicketOps AI</span><span class="font-label-mono-xs text-label-mono-xs text-badge-rule-text mt-0.5">FASTAPI PIPELINE</span></div></div><div class="px-space-md pt-space-md"><div class="px-space-sm pb-space-xs font-label-mono-xs text-label-mono-xs text-badge-rule-text uppercase tracking-wider">Operations Core</div><nav class="flex flex-col gap-1" data-active-classes="bg-surface-container-high text-on-surface font-headline-sm"><a aria-current="page" class="flex items-center gap-space-sm px-space-sm py-1.5 rounded-lg transition-colors bg-surface-container-high text-on-surface font-headline-sm" data-path="overview-and-analysis" href="#"><span class="material-symbols-outlined text-[18px]">monitoring</span><span>Overview &amp; Analysis</span></a><a class="flex items-center gap-space-sm px-space-sm py-1.5 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-body-base text-body-base" data-path="ticket-stream" href="#"><span class="material-symbols-outlined text-[18px]">receipt_long</span><span>Ticket Stream</span></a><a class="flex items-center gap-space-sm px-space-sm py-1.5 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-body-base text-body-base" data-path="llm-performance" href="#"><span class="material-symbols-outlined text-[18px]">psychology</span><span>LLM Diagnostics</span></a><a class="flex items-center gap-space-sm px-space-sm py-1.5 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-body-base text-body-base" data-path="triage-rules" href="#"><span class="material-symbols-outlined text-[18px]">schema</span><span>Triage Rules</span></a><a class="flex items-center gap-space-sm px-space-sm py-1.5 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-body-base text-body-base" data-path="anomaly-detection" href="#"><span class="material-symbols-outlined text-[18px]">warning</span><span>SLA Anomalies</span></a></nav></div></div><div class="p-space-md border-t border-border-subtle bg-surface-card"><div class="flex items-center justify-between p-space-sm bg-badge-rule-bg border border-badge-rule-border rounded-lg"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-secondary text-[18px]">memory</span><div class="flex flex-col"><span class="font-label-mono-xs text-label-mono-xs text-badge-rule-text">DATA BUFFER</span><span class="font-table-cell-mono text-table-cell-mono text-on-surface">500 cached / 0 drop</span></div></div><span class="font-label-mono-xs text-label-mono-xs text-status-success font-semibold">SYNCED</span></div></div></aside><div class="pl-64"><header class="fixed top-0 left-64 right-0 h-16 bg-surface-card border-b border-border-subtle z-40 flex items-center justify-between px-space-lg"><div class="flex items-center gap-space-md"><div class="flex items-center gap-space-xs font-label-mono-sm text-label-mono-sm text-badge-rule-text"><span class="hover:text-on-surface transition-colors">Support Operations</span><span class="text-border-strong">/</span><span class="text-on-surface font-medium">Overview &amp; Analysis</span></div><div class="hidden xl:flex items-center gap-space-sm pl-space-md border-l border-border-subtle"><div class="flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-badge-rule-bg border border-badge-rule-border font-label-mono-xs text-label-mono-xs text-badge-rule-text"><span class="w-1.5 h-1.5 rounded-full bg-slate-500"></span><span>MVP v1.0 • 127.0.0.1:8080</span></div><div class="flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-status-success-subtle border border-status-success/20 font-label-mono-xs text-label-mono-xs text-status-success"><span class="w-1.5 h-1.5 rounded-full bg-status-success"></span><span>FastAPI: Healthy • 500 tickets loaded</span></div><div class="flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-badge-llm-bg border border-badge-llm-border font-label-mono-xs text-label-mono-xs text-badge-llm-text"><span class="material-symbols-outlined text-[12px]">bolt</span><span>Groq LLaMA 3.3 Active / Fallback Ready</span></div></div></div><div class="flex items-center gap-space-md"><button class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-border-subtle bg-surface-card hover:bg-badge-rule-bg hover:border-border-strong text-on-surface transition-colors font-label-mono-sm text-label-mono-sm" type="button"><span class="material-symbols-outlined text-[16px]">refresh</span><span>Dataset Refresh</span></button><div class="h-6 w-px bg-border-subtle"></div><div class="flex items-center gap-space-sm"><div class="flex flex-col items-end"><span class="font-headline-sm text-headline-sm text-on-surface leading-none">Reliability Lead</span><span class="font-label-mono-xs text-label-mono-xs text-badge-rule-text mt-0.5">Pandas Engine #01</span></div><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><main class="relative pt-16 bg-surface-bg w-full px-space-lg py-space-lg min-h-screen"><div class="flex flex-col w-full gap-space-md">
+<!-- Top Sub-header & Action Bar -->
+<div class="flex flex-col gap-space-sm bg-surface-card p-space-md rounded-lg shadow-sm">
+<div class="flex flex-wrap items-center justify-between gap-space-sm">
+<div class="flex items-center gap-space-sm">
+<span class="font-headline-md text-headline-md text-on-surface">Ticket Stream &amp; Dataset Explorer</span>
+<div class="flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-status-success-subtle font-label-mono-xs text-label-mono-xs text-status-success">
+<span class="w-1.5 h-1.5 rounded-full bg-status-success animate-pulse"></span>
+<span>Streaming (500 records parsed) • Auto-sync 30s • FastAPI /api/stats OK</span>
+</div>
+</div>
+<div class="flex items-center gap-space-xs">
+<button class="flex items-center gap-1.5 px-2.5 py-1 rounded bg-surface-container-high hover:bg-surface-container text-on-surface transition-colors font-label-mono-sm text-label-mono-sm" type="button">
+<span class="material-symbols-outlined text-[15px]">tune</span>
+<span>Column Config</span>
+</button>
+<button class="flex items-center gap-1.5 px-2.5 py-1 rounded bg-surface-container-high hover:bg-surface-container text-on-surface transition-colors font-label-mono-sm text-label-mono-sm" type="button">
+<span class="material-symbols-outlined text-[15px]">download</span>
+<span>Export CSV</span>
+</button>
+<button class="flex items-center gap-1.5 px-3 py-1 rounded bg-primary text-on-primary hover:bg-primary-container transition-colors font-label-mono-sm text-label-mono-sm shadow-sm" type="button">
+<span class="material-symbols-outlined text-[15px]">terminal</span>
+<span>Query via NL Console</span>
+</button>
+</div>
+</div>
+<!-- Full-text search with natural language capabilities -->
+<div class="relative w-full">
+<div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-badge-rule-text">
+<span class="material-symbols-outlined text-[18px]">search</span>
+</div>
+<input class="w-full h-9 pl-9 pr-24 rounded bg-surface-container-low text-on-surface placeholder:text-badge-rule-text font-table-cell-mono text-table-cell-mono focus:outline-none focus:ring-2 focus:ring-secondary transition-all shadow-inner" placeholder="Filter by ticket ID, subject, customer email, error message, or SQL expression..." type="text" value="category:Authentication priority:Critical status:Open"/>
+<div class="absolute inset-y-0 right-0 pr-2.5 flex items-center gap-1">
+<span class="px-1.5 py-0.5 rounded bg-surface-card text-badge-rule-text font-label-mono-xs text-label-mono-xs shadow-sm">⌘K</span>
+<button class="text-badge-rule-text hover:text-on-surface p-0.5">
+<span class="material-symbols-outlined text-[16px]">close</span>
+</button>
+</div>
+</div>
+<!-- Quick Filter Pills -->
+<div class="flex flex-wrap items-center gap-space-xs pt-0.5">
+<span class="font-label-mono-xs text-label-mono-xs text-badge-rule-text uppercase mr-1">Views:</span>
+<button class="px-2 py-0.5 rounded font-label-mono-xs text-label-mono-xs bg-surface-container-high text-on-surface transition-colors">
+        All (500)
+      </button>
+<button class="px-2 py-0.5 rounded font-label-mono-xs text-label-mono-xs bg-status-critical-subtle text-status-critical font-semibold shadow-sm transition-colors flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-status-critical"></span>
+        Critical / P0 (19)
+      </button>
+<button class="px-2 py-0.5 rounded font-label-mono-xs text-label-mono-xs bg-surface-container text-on-surface transition-colors hover:bg-surface-container-high">
+        Unresolved High (34)
+      </button>
+<button class="px-2 py-0.5 rounded font-label-mono-xs text-label-mono-xs bg-surface-container text-on-surface transition-colors hover:bg-surface-container-high">
+        Escalated to Eng (21)
+      </button>
+<button class="px-2 py-0.5 rounded font-label-mono-xs text-label-mono-xs bg-status-warning-subtle text-status-warning transition-colors font-medium">
+        SLA Breached (29)
+      </button>
+<button class="px-2 py-0.5 rounded font-label-mono-xs text-label-mono-xs bg-surface-container text-on-surface transition-colors hover:bg-surface-container-high">
+        CSAT &lt; 3.0 (14)
+      </button>
+</div>
+</div>
+<!-- Multi-Faceted Filter & Aggregation Bar -->
+<div class="grid grid-cols-2 md:grid-cols-5 gap-space-xs bg-surface-card p-space-sm rounded-lg shadow-sm">
+<!-- Category Filter -->
+<div class="flex flex-col gap-0.5">
+<label class="font-label-mono-xs text-label-mono-xs text-badge-rule-text uppercase">Category</label>
+<select class="h-7 px-2 rounded bg-surface-container-low text-on-surface font-body-sm text-body-sm focus:outline-none focus:ring-1 focus:ring-secondary cursor-pointer">
+<option>All Categories (500)</option>
+<option selected="">Authentication (170)</option>
+<option>Billing &amp; Subs (140)</option>
+<option>API / Developer SDK (110)</option>
+<option>Infrastructure (80)</option>
+</select>
+</div>
+<!-- Priority Filter -->
+<div class="flex flex-col gap-0.5">
+<label class="font-label-mono-xs text-label-mono-xs text-badge-rule-text uppercase">Priority / Severity</label>
+<select class="h-7 px-2 rounded bg-surface-container-low text-on-surface font-body-sm text-body-sm focus:outline-none focus:ring-1 focus:ring-secondary cursor-pointer">
+<option>All Priorities</option>
+<option selected="">Critical P0 (19)</option>
+<option>High P1 (84)</option>
+<option>Medium P2 (210)</option>
+<option>Low P3 (187)</option>
+</select>
+</div>
+<!-- Status Filter -->
+<div class="flex flex-col gap-0.5">
+<label class="font-label-mono-xs text-label-mono-xs text-badge-rule-text uppercase">Status State</label>
+<select class="h-7 px-2 rounded bg-surface-container-low text-on-surface font-body-sm text-body-sm focus:outline-none focus:ring-1 focus:ring-secondary cursor-pointer">
+<option>All Statuses</option>
+<option selected="">Open / Action Req (142)</option>
+<option>In-Progress (28)</option>
+<option>Escalated (21)</option>
+<option>Resolved (318)</option>
+</select>
+</div>
+<!-- Assigned Agent -->
+<div class="flex flex-col gap-0.5">
+<label class="font-label-mono-xs text-label-mono-xs text-badge-rule-text uppercase">Assigned Agent</label>
+<select class="h-7 px-2 rounded bg-surface-container-low text-on-surface font-body-sm text-body-sm focus:outline-none focus:ring-1 focus:ring-secondary cursor-pointer">
+<option selected="">All Agents</option>
+<option>Marcus Vance</option>
+<option>Elena Rostova</option>
+<option>Devon Clark</option>
+<option>Sarah Jenkins</option>
+<option>Tariq Al-Mansoor</option>
+<option>Unassigned</option>
+</select>
+</div>
+<!-- Range Selector -->
+<div class="flex flex-col gap-0.5 col-span-2 md:col-span-1">
+<label class="font-label-mono-xs text-label-mono-xs text-badge-rule-text uppercase">Time Window</label>
+<div class="flex items-center h-7 rounded bg-surface-container-low p-0.5 font-label-mono-xs text-label-mono-xs">
+<button class="flex-1 text-center py-0.5 rounded bg-surface-card text-on-surface shadow-xs font-semibold">30D</button>
+<button class="flex-1 text-center py-0.5 text-badge-rule-text hover:text-on-surface">7D</button>
+<button class="flex-1 text-center py-0.5 text-badge-rule-text hover:text-on-surface">90D</button>
+<button class="flex-1 text-center py-0.5 text-badge-rule-text hover:text-on-surface">Custom</button>
+</div>
+</div>
+</div>
+<!-- Split View: Table Stream + Diagnostic Drilldown Drawer -->
+<div class="grid grid-cols-12 gap-space-md items-start">
+<!-- Center Panel: High-Density Ticket Stream Table (7 cols on 12-col layout) -->
+<div class="col-span-12 xl:col-span-7 flex flex-col bg-surface-card rounded-lg shadow-sm overflow-hidden">
+<!-- Table Top Meta -->
+<div class="px-space-md py-space-sm bg-surface-container-low flex items-center justify-between">
+<div class="flex items-center gap-space-sm">
+<span class="font-headline-sm text-headline-sm text-on-surface">Active Stream Buffer</span>
+<span class="font-label-mono-xs text-label-mono-xs px-2 py-0.5 rounded bg-surface-container text-on-surface">Showing 8 of 500 rows</span>
+</div>
+<div class="flex items-center gap-1 font-label-mono-xs text-label-mono-xs text-badge-rule-text">
+<span>Sort:</span>
+<span class="text-on-surface font-semibold">Priority (Desc), Created (Desc)</span>
+</div>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container h-8 text-on-surface-variant font-label-mono-sm text-label-mono-sm uppercase tracking-wider select-none">
+<th class="py-1 px-space-sm w-8">
+<input class="rounded text-primary focus:ring-secondary accent-primary w-3.5 h-3.5" type="checkbox"/>
+</th>
+<th class="py-1 px-space-sm font-medium">Ticket / Subject</th>
+<th class="py-1 px-space-sm font-medium">Priority</th>
+<th class="py-1 px-space-sm font-medium">Category</th>
+<th class="py-1 px-space-sm font-medium">Owner</th>
+<th class="py-1 px-space-sm font-medium">SLA State</th>
+<th class="py-1 px-space-sm font-medium">CSAT</th>
+<th class="py-1 px-space-sm font-medium text-right">Age</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-border-subtle/40 font-body-base text-body-base">
+<!-- Row 1: SELECTED DRILLDOWN #TICK-4912 -->
+<tr class="bg-status-info-subtle/70 hover:bg-status-info-subtle transition-colors cursor-pointer group">
+<td class="py-space-sm px-space-sm">
+<input checked="" class="rounded text-primary focus:ring-secondary accent-primary w-3.5 h-3.5" type="checkbox"/>
+</td>
+<td class="py-space-sm px-space-sm min-w-0">
+<div class="flex flex-col">
+<div class="flex items-center gap-1.5">
+<span class="font-table-cell-mono text-table-cell-mono font-semibold text-secondary">#TICK-4912</span>
+<span class="font-label-mono-xs text-label-mono-xs px-1 rounded bg-badge-llm-bg text-badge-llm-text uppercase">LLM Cluster</span>
+</div>
+<span class="font-medium text-on-surface truncate text-body-sm max-w-xs group-hover:text-secondary transition-colors">
+                    Auth SSO SAML 2.0 Outage on US-East tenant
+                  </span>
+<span class="font-label-mono-xs text-label-mono-xs text-badge-rule-text">Acme Corp (Tier 1)</span>
+</div>
+</td>
+<td class="py-space-sm px-space-sm whitespace-nowrap">
+<span class="inline-flex items-center gap-1 px-1.5 py-0.5 rounded-full bg-status-critical-subtle text-status-critical font-label-mono-xs text-label-mono-xs font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-status-critical"></span>
+                  P0 CRIT
+                </span>
+</td>
+<td class="py-space-sm px-space-sm whitespace-nowrap">
+<span class="font-label-mono-xs text-label-mono-xs px-1.5 py-0.5 rounded bg-surface-container text-on-surface">Auth</span>
+</td>
+<td class="py-space-sm px-space-sm whitespace-nowrap">
+<span class="font-label-mono-xs text-label-mono-xs text-status-critical bg-status-critical-subtle px-1.5 py-0.5 rounded font-medium">Unassigned</span>
+</td>
+<td class="py-space-sm px-space-sm whitespace-nowrap">
+<div class="flex flex-col">
+<span class="font-label-mono-xs text-label-mono-xs text-status-critical font-semibold">BREACHED</span>
+<span class="font-table-cell-mono text-[10px] text-badge-rule-text">42m (Limit 15m)</span>
+</div>
+</td>
+<td class="py-space-sm px-space-sm whitespace-nowrap font-table-cell-mono text-table-cell-mono text-badge-rule-text">
+                —
+              </td>
+<td class="py-space-sm px-space-sm whitespace-nowrap text-right font-table-cell-mono text-table-cell-mono text-status-critical font-medium">
+                36h
+              </td>
+</tr>
+<!-- Row 2: #TICK-4770 -->
+<tr class="hover:bg-surface-container-low transition-colors cursor-pointer">
+<td class="py-space-sm px-space-sm">
+<input class="rounded text-primary focus:ring-secondary accent-primary w-3.5 h-3.5" type="checkbox"/>
+</td>
+<td class="py-space-sm px-space-sm min-w-0">
+<div class="flex flex-col">
+<div class="flex items-center gap-1.5">
+<span class="font-table-cell-mono text-table-cell-mono font-medium text-on-surface">#TICK-4770</span>
+<span class="font-label-mono-xs text-label-mono-xs px-1 rounded bg-badge-rule-bg text-badge-rule-text uppercase">Rule Engine</span>
+</div>
+<span class="font-medium text-on-surface truncate text-body-sm max-w-xs">
+                    Data Pipeline Lag - Kafka consumer group stalled
+                  </span>
+<span class="font-label-mono-xs text-label-mono-xs text-badge-rule-text">FinTech Global</span>
+</div>
+</td>
+<td class="py-space-sm px-space-sm whitespace-nowrap">
+<span class="inline-flex items-center gap-1 px-1.5 py-0.5 rounded-full bg-status-critical-subtle text-status-critical font-label-mono-xs text-label-mono-xs font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-status-critical"></span>
+                  P0 CRIT
+                </span>
+</td>
+<td class="py-space-sm px-space-sm whitespace-nowrap">
+<span class="font-label-mono-xs text-label-mono-xs px-1.5 py-0.5 rounded bg-surface-container text-on-surface">Infra</span>
+</td>
+<td class="py-space-sm px-space-sm whitespace-nowrap font-body-sm text-body-sm text-on-surface">
+                Devon Clark
+              </td>
+<td class="py-space-sm px-space-sm whitespace-nowrap">
+<span class="font-label-mono-xs text-label-mono-xs text-status-warning bg-status-warning-subtle px-1.5 py-0.5 rounded font-semibold">Escalated (Eng)</span>
+</td>
+<td class="py-space-sm px-space-sm whitespace-nowrap font-table-cell-mono text-table-cell-mono text-badge-rule-text">
+                —
+              </td>
+<td class="py-space-sm px-space-sm whitespace-nowrap text-right font-table-cell-mono text-table-cell-mono text-badge-rule-text">
+                4d
+              </td>
+</tr>
+<!-- Row 3: #TICK-4821 -->
+<tr class="hover:bg-surface-container-low transition-colors cursor-pointer">
+<td class="py-space-sm px-space-sm">
+<input class="rounded text-primary focus:ring-secondary accent-primary w-3.5 h-3.5" type="checkbox"/>
+</td>
+<td class="py-space-sm px-space-sm min-w-0">
+<div class="flex flex-col">
+<div class="flex items-center gap-1.5">
+<span class="font-table-cell-mono text-table-cell-mono font-medium text-on-surface">#TICK-4821</span>
+</div>
+<span class="font-medium text-on-surface truncate text-body-sm max-w-xs">
+                    Billing Sync Stripe Webhook Re-try Failure
+                  </span>
+<span class="font-label-mono-xs text-label-mono-xs text-badge-rule-text">ScaleAI Labs</span>
+</div>
+</td>
+<td class="py-space-sm px-space-sm whitespace-nowrap">
+<span class="inline-flex items-center gap-1 px-1.5 py-0.5 rounded-full bg-status-warning-subtle text-status-warning font-label-mono-xs text-label-mono-xs font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-status-warning"></span>
+                  P1 HIGH
+                </span>
+</td>
+<td class="py-space-sm px-space-sm whitespace-nowrap">
+<span class="font-label-mono-xs text-label-mono-xs px-1.5 py-0.5 rounded bg-surface-container text-on-surface">Billing</span>
+</td>
+<td class="py-space-sm px-space-sm whitespace-nowrap font-body-sm text-body-sm text-on-surface">
+                Sarah Jenkins
+              </td>
+<td class="py-space-sm px-space-sm whitespace-nowrap">
+<span class="font-label-mono-xs text-label-mono-xs text-status-success bg-status-success-subtle px-1.5 py-0.5 rounded font-semibold">Resolved</span>
+</td>
+<td class="py-space-sm px-space-sm whitespace-nowrap">
+<span class="font-label-mono-xs text-label-mono-xs px-1.5 py-0.5 rounded bg-status-critical-subtle text-status-critical font-semibold">2.5★</span>
+</td>
+<td class="py-space-sm px-space-sm whitespace-nowrap text-right font-table-cell-mono text-table-cell-mono text-badge-rule-text">
+                5d
+              </td>
+</tr>
+<!-- Row 4: #TICK-4655 -->
+<tr class="hover:bg-surface-container-low transition-colors cursor-pointer">
+<td class="py-space-sm px-space-sm">
+<input class="rounded text-primary focus:ring-secondary accent-primary w-3.5 h-3.5" type="checkbox"/>
+</td>
+<td class="py-space-sm px-space-sm min-w-0">
+<div class="flex flex-col">
+<div class="flex items-center gap-1.5">
+<span class="font-table-cell-mono text-table-cell-mono font-medium text-on-surface">#TICK-4655</span>
+</div>
+<span class="font-medium text-on-surface truncate text-body-sm max-w-xs">
+                    Enterprise API Rate Limit 429 Throttle Bug
+                  </span>
+<span class="font-label-mono-xs text-label-mono-xs text-badge-rule-text">Veloce Systems</span>
+</div>
+</td>
+<td class="py-space-sm px-space-sm whitespace-nowrap">
+<span class="inline-flex items-center gap-1 px-1.5 py-0.5 rounded-full bg-status-warning-subtle text-status-warning font-label-mono-xs text-label-mono-xs font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-status-warning"></span>
+                  P1 HIGH
+                </span>
+</td>
+<td class="py-space-sm px-space-sm whitespace-nowrap">
+<span class="font-label-mono-xs text-label-mono-xs px-1.5 py-0.5 rounded bg-surface-container text-on-surface">API / SDK</span>
+</td>
+<td class="py-space-sm px-space-sm whitespace-nowrap font-body-sm text-body-sm text-on-surface">
+                Marcus Vance
+              </td>
+<td class="py-space-sm px-space-sm whitespace-nowrap">
+<span class="font-label-mono-xs text-label-mono-xs text-status-success bg-status-success-subtle px-1.5 py-0.5 rounded font-semibold">Resolved (3.1h)</span>
+</td>
+<td class="py-space-sm px-space-sm whitespace-nowrap">
+<span class="font-label-mono-xs text-label-mono-xs px-1.5 py-0.5 rounded bg-status-success-subtle text-status-success font-semibold">4.8★</span>
+</td>
+<td class="py-space-sm px-space-sm whitespace-nowrap text-right font-table-cell-mono text-table-cell-mono text-badge-rule-text">
+                6d
+              </td>
+</tr>
+<!-- Row 5: #TICK-4988 -->
+<tr class="hover:bg-surface-container-low transition-colors cursor-pointer">
+<td class="py-space-sm px-space-sm">
+<input class="rounded text-primary focus:ring-secondary accent-primary w-3.5 h-3.5" type="checkbox"/>
+</td>
+<td class="py-space-sm px-space-sm min-w-0">
+<div class="flex flex-col">
+<div class="flex items-center gap-1.5">
+<span class="font-table-cell-mono text-table-cell-mono font-medium text-on-surface">#TICK-4988</span>
+</div>
+<span class="font-medium text-on-surface truncate text-body-sm max-w-xs">
+                    MFA TOTP recovery seed mismatch after reset
+                  </span>
+<span class="font-label-mono-xs text-label-mono-xs text-badge-rule-text">HealthFirst</span>
+</div>
+</td>
+<td class="py-space-sm px-space-sm whitespace-nowrap">
+<span class="inline-flex items-center gap-1 px-1.5 py-0.5 rounded-full bg-surface-container-high text-on-surface-variant font-label-mono-xs text-label-mono-xs font-semibold">
+                  P2 MED
+                </span>
+</td>
+<td class="py-space-sm px-space-sm whitespace-nowrap">
+<span class="font-label-mono-xs text-label-mono-xs px-1.5 py-0.5 rounded bg-surface-container text-on-surface">Auth</span>
+</td>
+<td class="py-space-sm px-space-sm whitespace-nowrap font-body-sm text-body-sm text-on-surface">
+                Elena Rostova
+              </td>
+<td class="py-space-sm px-space-sm whitespace-nowrap">
+<span class="font-label-mono-xs text-label-mono-xs text-status-success bg-status-success-subtle px-1.5 py-0.5 rounded font-semibold">Resolved (1.4h)</span>
+</td>
+<td class="py-space-sm px-space-sm whitespace-nowrap">
+<span class="font-label-mono-xs text-label-mono-xs px-1.5 py-0.5 rounded bg-status-success-subtle text-status-success font-semibold">5.0★</span>
+</td>
+<td class="py-space-sm px-space-sm whitespace-nowrap text-right font-table-cell-mono text-table-cell-mono text-badge-rule-text">
+                2h
+              </td>
+</tr>
+<!-- Row 6: #TICK-4950 -->
+<tr class="hover:bg-surface-container-low transition-colors cursor-pointer">
+<td class="py-space-sm px-space-sm">
+<input class="rounded text-primary focus:ring-secondary accent-primary w-3.5 h-3.5" type="checkbox"/>
+</td>
+<td class="py-space-sm px-space-sm min-w-0">
+<div class="flex flex-col">
+<div class="flex items-center gap-1.5">
+<span class="font-table-cell-mono text-table-cell-mono font-medium text-on-surface">#TICK-4950</span>
+</div>
+<span class="font-medium text-on-surface truncate text-body-sm max-w-xs">
+                    SDK Python 3.12 compatibility deprecation warning
+                  </span>
+<span class="font-label-mono-xs text-label-mono-xs text-badge-rule-text">DevCorp</span>
+</div>
+</td>
+<td class="py-space-sm px-space-sm whitespace-nowrap">
+<span class="inline-flex items-center gap-1 px-1.5 py-0.5 rounded-full bg-badge-rule-bg text-badge-rule-text font-label-mono-xs text-label-mono-xs">
+                  P3 LOW
+                </span>
+</td>
+<td class="py-space-sm px-space-sm whitespace-nowrap">
+<span class="font-label-mono-xs text-label-mono-xs px-1.5 py-0.5 rounded bg-surface-container text-on-surface">API / SDK</span>
+</td>
+<td class="py-space-sm px-space-sm whitespace-nowrap font-body-sm text-body-sm text-on-surface">
+                Tariq Al-Mansoor
+              </td>
+<td class="py-space-sm px-space-sm whitespace-nowrap">
+<span class="font-label-mono-xs text-label-mono-xs text-secondary bg-surface-container px-1.5 py-0.5 rounded font-semibold">Open (Investigating)</span>
+</td>
+<td class="py-space-sm px-space-sm whitespace-nowrap font-table-cell-mono text-table-cell-mono text-badge-rule-text">
+                —
+              </td>
+<td class="py-space-sm px-space-sm whitespace-nowrap text-right font-table-cell-mono text-table-cell-mono text-badge-rule-text">
+                1d
+              </td>
+</tr>
+<!-- Row 7: #TICK-4902 -->
+<tr class="hover:bg-surface-container-low transition-colors cursor-pointer">
+<td class="py-space-sm px-space-sm">
+<input class="rounded text-primary focus:ring-secondary accent-primary w-3.5 h-3.5" type="checkbox"/>
+</td>
+<td class="py-space-sm px-space-sm min-w-0">
+<div class="flex flex-col">
+<div class="flex items-center gap-1.5">
+<span class="font-table-cell-mono text-table-cell-mono font-medium text-on-surface">#TICK-4902</span>
+</div>
+<span class="font-medium text-on-surface truncate text-body-sm max-w-xs">
+                    Invoice VAT breakdown miscalculation for EU reverse charge
+                  </span>
+<span class="font-label-mono-xs text-label-mono-xs text-badge-rule-text">Nordica Media</span>
+</div>
+</td>
+<td class="py-space-sm px-space-sm whitespace-nowrap">
+<span class="inline-flex items-center gap-1 px-1.5 py-0.5 rounded-full bg-surface-container-high text-on-surface-variant font-label-mono-xs text-label-mono-xs font-semibold">
+                  P2 MED
+                </span>
+</td>
+<td class="py-space-sm px-space-sm whitespace-nowrap">
+<span class="font-label-mono-xs text-label-mono-xs px-1.5 py-0.5 rounded bg-surface-container text-on-surface">Billing</span>
+</td>
+<td class="py-space-sm px-space-sm whitespace-nowrap font-body-sm text-body-sm text-on-surface">
+                Sarah Jenkins
+              </td>
+<td class="py-space-sm px-space-sm whitespace-nowrap">
+<span class="font-label-mono-xs text-label-mono-xs text-status-success bg-status-success-subtle px-1.5 py-0.5 rounded font-semibold">Resolved (4.2h)</span>
+</td>
+<td class="py-space-sm px-space-sm whitespace-nowrap">
+<span class="font-label-mono-xs text-label-mono-xs px-1.5 py-0.5 rounded bg-status-success-subtle text-status-success font-semibold">4.5★</span>
+</td>
+<td class="py-space-sm px-space-sm whitespace-nowrap text-right font-table-cell-mono text-table-cell-mono text-badge-rule-text">
+                2d
+              </td>
+</tr>
+<!-- Row 8: #TICK-4874 -->
+<tr class="hover:bg-surface-container-low transition-colors cursor-pointer">
+<td class="py-space-sm px-space-sm">
+<input class="rounded text-primary focus:ring-secondary accent-primary w-3.5 h-3.5" type="checkbox"/>
+</td>
+<td class="py-space-sm px-space-sm min-w-0">
+<div class="flex flex-col">
+<div class="flex items-center gap-1.5">
+<span class="font-table-cell-mono text-table-cell-mono font-medium text-on-surface">#TICK-4874</span>
+</div>
+<span class="font-medium text-on-surface truncate text-body-sm max-w-xs">
+                    Webhook payload signature mismatch with HMAC-SHA256
+                  </span>
+<span class="font-label-mono-xs text-label-mono-xs text-badge-rule-text">CyberArmor</span>
+</div>
+</td>
+<td class="py-space-sm px-space-sm whitespace-nowrap">
+<span class="inline-flex items-center gap-1 px-1.5 py-0.5 rounded-full bg-status-warning-subtle text-status-warning font-label-mono-xs text-label-mono-xs font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-status-warning"></span>
+                  P1 HIGH
+                </span>
+</td>
+<td class="py-space-sm px-space-sm whitespace-nowrap">
+<span class="font-label-mono-xs text-label-mono-xs px-1.5 py-0.5 rounded bg-surface-container text-on-surface">API / SDK</span>
+</td>
+<td class="py-space-sm px-space-sm whitespace-nowrap font-body-sm text-body-sm text-on-surface">
+                Marcus Vance
+              </td>
+<td class="py-space-sm px-space-sm whitespace-nowrap">
+<span class="font-label-mono-xs text-label-mono-xs text-status-success bg-status-success-subtle px-1.5 py-0.5 rounded font-semibold">Resolved (2.8h)</span>
+</td>
+<td class="py-space-sm px-space-sm whitespace-nowrap">
+<span class="font-label-mono-xs text-label-mono-xs px-1.5 py-0.5 rounded bg-status-success-subtle text-status-success font-semibold">4.9★</span>
+</td>
+<td class="py-space-sm px-space-sm whitespace-nowrap text-right font-table-cell-mono text-table-cell-mono text-badge-rule-text">
+                3d
+              </td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Table Footer / Pagination -->
+<div class="px-space-md py-space-sm bg-surface-card border-t border-border-subtle/50 flex flex-wrap items-center justify-between gap-space-sm font-label-mono-xs text-label-mono-xs text-badge-rule-text">
+<div class="flex items-center gap-space-sm">
+<span>Showing 1-25 of 500 tickets</span>
+<span class="w-1 h-1 rounded-full bg-border-strong"></span>
+<span>FastAPI response time: <span class="font-semibold text-on-surface">14.2ms</span></span>
+</div>
+<div class="flex items-center gap-1">
+<button class="px-2 py-1 rounded bg-surface-container text-on-surface opacity-50 cursor-not-allowed">Previous</button>
+<button class="px-2.5 py-1 rounded bg-primary text-on-primary font-semibold">1</button>
+<button class="px-2.5 py-1 rounded hover:bg-surface-container text-on-surface">2</button>
+<button class="px-2.5 py-1 rounded hover:bg-surface-container text-on-surface">3</button>
+<span class="px-1 text-badge-rule-text">...</span>
+<button class="px-2.5 py-1 rounded hover:bg-surface-container text-on-surface">25</button>
+<button class="px-2 py-1 rounded bg-surface-container hover:bg-surface-container-high text-on-surface">Next</button>
+</div>
+</div>
+</div>
+<!-- Right Panel: Inspection & AI Diagnostic Drawer (5 cols on 12-col layout) -->
+<div class="col-span-12 xl:col-span-5 flex flex-col gap-space-md">
+<!-- Drilldown Detail Card -->
+<div class="bg-surface-card rounded-lg shadow-sm p-space-md flex flex-col gap-space-md">
+<!-- Drawer Header -->
+<div class="flex flex-col gap-space-xs pb-space-sm border-b border-border-subtle/60">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="font-table-cell-mono text-headline-sm font-semibold text-secondary">#TICK-4912</span>
+<span class="px-2 py-0.5 rounded-full bg-status-critical-subtle text-status-critical font-label-mono-xs text-label-mono-xs font-semibold">
+                SLA BREACHED +27m
+              </span>
+</div>
+<div class="flex items-center gap-1">
+<button class="p-1 rounded hover:bg-surface-container text-badge-rule-text hover:text-on-surface" title="Copy Link">
+<span class="material-symbols-outlined text-[18px]">link</span>
+</button>
+<button class="p-1 rounded hover:bg-surface-container text-badge-rule-text hover:text-on-surface" title="Open Full View">
+<span class="material-symbols-outlined text-[18px]">open_in_new</span>
+</button>
+</div>
+</div>
+<h2 class="font-headline-sm text-headline-sm text-on-surface leading-snug">
+            Auth SSO SAML 2.0 Outage on US-East tenant
+          </h2>
+<!-- Quick Action Buttons -->
+<div class="flex flex-wrap items-center gap-1.5 pt-1">
+<button class="px-2 py-1 rounded bg-primary text-on-primary hover:bg-primary-container text-label-mono-xs font-label-mono-xs font-semibold flex items-center gap-1 shadow-xs">
+<span class="material-symbols-outlined text-[13px]">person_add</span>
+<span>Assign Agent</span>
+</button>
+<button class="px-2 py-1 rounded bg-status-critical-subtle text-status-critical hover:bg-status-critical/10 text-label-mono-xs font-label-mono-xs font-semibold flex items-center gap-1">
+<span class="material-symbols-outlined text-[13px]">emergency</span>
+<span>Escalate to Slack</span>
+</button>
+<button class="px-2 py-1 rounded bg-surface-container hover:bg-surface-container-high text-on-surface text-label-mono-xs font-label-mono-xs flex items-center gap-1">
+<span class="material-symbols-outlined text-[13px]">play_arrow</span>
+<span>Run Rule Analysis</span>
+</button>
+<button class="px-2 py-1 rounded bg-badge-llm-bg text-badge-llm-text hover:bg-badge-llm-border/40 text-label-mono-xs font-label-mono-xs flex items-center gap-1">
+<span class="material-symbols-outlined text-[13px]">psychology</span>
+<span>Re-query LLM</span>
+</button>
+</div>
+</div>
+<!-- AI Diagnostic Box (Groq LLaMA 3.3 Engine output) -->
+<div class="bg-badge-llm-bg/60 p-space-md rounded-lg flex flex-col gap-space-xs">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-1.5 text-badge-llm-text font-label-mono-xs text-label-mono-xs font-semibold uppercase tracking-wider">
+<span class="material-symbols-outlined text-[16px]">psychology</span>
+<span>Groq LLaMA 3.3 AI Heuristic Synthesis</span>
+</div>
+<span class="font-label-mono-xs text-label-mono-xs px-1.5 py-0.2 rounded bg-badge-llm-border text-badge-llm-text font-semibold">96% Conf.</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface leading-relaxed">
+            Identified cluster of <strong class="text-on-surface font-semibold">6 related SAML assertion failures</strong> across US-East cluster following 03:00 UTC auth gateway release. Customer payload exhibits signature timestamp skew exceeding standard 300s threshold.
+          </p>
+<div class="flex items-center gap-2 pt-1 border-t border-badge-llm-border/40 font-label-mono-xs text-label-mono-xs">
+<span class="text-status-critical font-medium flex items-center gap-1">
+<span class="material-symbols-outlined text-[13px]">warning</span>
+              Outlier SLA Breach (42m First Response vs 15m Target)
+            </span>
+</div>
+</div>
+<!-- Metadata & Provenance Telemetry -->
+<div class="grid grid-cols-2 gap-space-xs bg-surface-container-low p-space-sm rounded-lg font-body-sm text-body-sm">
+<div class="flex flex-col">
+<span class="font-label-mono-xs text-label-mono-xs text-badge-rule-text uppercase">Account Tier</span>
+<span class="font-medium text-on-surface">Acme Corp ($180k ARR)</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-mono-xs text-label-mono-xs text-badge-rule-text uppercase">Reporter</span>
+<span class="font-table-cell-mono text-table-cell-mono text-on-surface truncate">david.k@acmeworks.com</span>
+</div>
+<div class="flex flex-col col-span-2 pt-1 border-t border-border-subtle/50">
+<span class="font-label-mono-xs text-label-mono-xs text-badge-rule-text uppercase">Backend Endpoint / Payload</span>
+<code class="font-table-cell-mono text-[11px] text-secondary bg-surface-card px-1.5 py-0.5 rounded mt-0.5">
+              POST /v1/sso/saml?cluster=us-east-prod-02 [ERR: SAML_SIG_INVALID]
+            </code>
+</div>
+</div>
+<!-- Incident Timeline & Escalation Trace -->
+<div class="flex flex-col gap-space-xs">
+<span class="font-label-mono-xs text-label-mono-xs text-badge-rule-text uppercase font-semibold tracking-wider">
+            Execution Log &amp; Event Trail
+          </span>
+<div class="flex flex-col gap-2 pl-2 border-l-2 border-border-subtle font-table-cell-mono text-table-cell-mono">
+<div class="flex flex-col">
+<div class="flex items-center gap-2">
+<span class="text-badge-rule-text font-label-mono-xs">03:15:02 UTC</span>
+<span class="font-label-mono-xs px-1 rounded bg-badge-rule-bg text-badge-rule-text">API Ingestion</span>
+</div>
+<span class="text-body-sm text-on-surface">Customer reported SAML assertion invalid for 1,200 users</span>
+</div>
+<div class="flex flex-col">
+<div class="flex items-center gap-2">
+<span class="text-badge-rule-text font-label-mono-xs">03:22:18 UTC</span>
+<span class="font-label-mono-xs px-1 rounded bg-badge-llm-bg text-badge-llm-text">Auto-Triage</span>
+</div>
+<span class="text-body-sm text-on-surface">LLM tagged P0 Critical + assigned category: Authentication</span>
+</div>
+<div class="flex flex-col">
+<div class="flex items-center gap-2">
+<span class="text-status-critical font-label-mono-xs font-semibold">04:00:00 UTC</span>
+<span class="font-label-mono-xs px-1 rounded bg-status-critical-subtle text-status-critical font-semibold">BREACH</span>
+</div>
+<span class="text-body-sm text-status-critical">SLA breach event dispatched to #ops-sev1 and PagerDuty</span>
+</div>
+</div>
+</div>
+<!-- Quick NLP Query Helper -->
+<button class="w-full py-1.5 px-space-md rounded bg-surface-container-high hover:bg-surface-container text-secondary text-label-mono-sm font-label-mono-sm font-semibold flex items-center justify-center gap-1.5 transition-colors" type="button">
+<span class="material-symbols-outlined text-[16px]">manage_search</span>
+<span>Query similar tickets with this error signature</span>
+</button>
+</div>
+<!-- Secondary Observability Sparkline Panel -->
+<div class="bg-surface-card rounded-lg shadow-sm p-space-md flex flex-col gap-space-sm">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-secondary text-[18px]">query_stats</span>
+<span class="font-headline-sm text-headline-sm text-on-surface">Cluster Telemetry (Past 4 Hours)</span>
+</div>
+<span class="font-label-mono-xs text-label-mono-xs text-status-critical font-semibold">+180% Spike</span>
+</div>
+<!-- SVG Mini-Chart for SAML failures -->
+<div class="w-full h-16 bg-surface-container-low rounded flex items-end p-1 relative overflow-hidden">
+<svg class="w-full h-full text-secondary" preserveaspectratio="none" viewbox="0 0 100 40">
+<path d="M0,35 Q15,36 30,34 T60,32 T75,12 T85,5 T100,2" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="2"></path>
+<path d="M0,35 Q15,36 30,34 T60,32 T75,12 T85,5 T100,2 L100,40 L0,40 Z" fill="currentColor" opacity="0.08"></path>
+</svg>
+<div class="absolute right-2 top-1.5 font-label-mono-xs text-label-mono-xs bg-status-critical text-on-error px-1 rounded">
+            Anomaly Peak
+          </div>
+</div>
+<div class="flex items-center justify-between text-badge-rule-text font-label-mono-xs text-label-mono-xs">
+<span>00:00 UTC (Nominal)</span>
+<span>02:00 UTC</span>
+<span>Now (Alert State)</span>
+</div>
+</div>
+</div>
+</div>
+</div></main></div></body></html>
