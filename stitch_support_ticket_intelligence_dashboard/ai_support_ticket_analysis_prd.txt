@@ -1,0 +1,15 @@
+# Product Requirements Document
+## AI Support Ticket Analysis System
+
+**Status:** MVP implemented
+**Version:** 1.0
+**Owner:** Support Operations / Engineering
+**Last Updated:** 2026-09-16
+
+### Key Capabilities & Scope
+- **Dataset:** 500 tickets loaded from `support_tickets.csv` (FastAPI backend + Pandas).
+- **KPI Metrics:** Total, Open, Critical, Resolved, Escalated ticket counts, SLA breach rates, and CSAT.
+- **Natural-Language Querying (Groq LLM + Deterministic Rule Fallback):** Plain-English queries, preset questions, transparent `[llm | rule-based]` attribution tag.
+- **Anomaly Detection:** Outlier resolution times, unresolved high-priority tickets, escalated unresolved bottlenecks, high response times with configurable day filter (`days=30`).
+- **Agent Resolution & Leaderboard:** Agent performance metrics (resolved count, average CSAT rating, resolution times).
+- **REST Endpoints:** `/`, `/api/health`, `/api/query`, `/api/anomalies`, `/api/stats`, `/api/agents`.
